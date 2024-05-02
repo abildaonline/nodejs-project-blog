@@ -1,0 +1,74 @@
+header{
+    padding: 20px 5%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.head-logo p{
+    font-size: 50px;
+    color: #00A2DC;
+}
+.head-logo p{
+    font-size: 50px;
+    color: #00A2DC;
+}
+
+.head-menu{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.head-search{
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.head-search input{
+    padding: 7px 7px;
+    background-color: transparent;
+    border: 1px solid #E7E7E7;
+    outline: none;
+    width: 250px;
+}
+
+
+.head-search button{
+    background-color: #00A2DC;
+    border: 4.6px solid #00A2DC;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.head-search button>svg>path{
+    fill: #FFFFFF;
+}
+
+
+.head-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head-buttons button{
+    background-color: #00A2DC;
+    border: 4.6px solid #00A2DC;
+    color: #FFFFFF;
+    font-size: 16px;
+    margin-left: 20px;
+    cursor: pointer;
+}

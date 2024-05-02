@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbildaOnline Blog</title>
+    <script src="https://kit.fontawesome.com/c2f2cc8b3e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style/all.css">
+</head>
+<body>
+    <%- include('partials/header.ejs')%>
+
+
+    <div class="main_container">
+
+        <div class="main_left">
+            <div class="main_left_header">
+                <div class="main_blog_personal_page_text">
+                    <h1>Сохраненные блоги</h1>
+                </div>
+            </div>
+
+            <%
+            if(user.toWatch.length > 0){ 
+                user.toWatch.forEach(blog => {
+            %>
+            <div class="main_content_blog">
+                <div class="main_content_blog_img">
+                    <img src="<%= blog.image %>" alt="main_content_blog_img">
+                </div>
+                <div class="main_content_blog_text">
+                    <h3><%= blog.title %></h3>
+                    <p><%= blog.text %></p>
+                    
+                </div>
+                    
+                <div class="main_content_blog_info">
+                    <div class="main_content_blog_info_icons_and_text">
+                        <i class="fa-solid fa-list"></i>
+                        <p><%= blog.category.name %></p>
+                    </div>
+                    <button class="blog-btn" onclick="deleteFromToWatch('<%= blog._id %>')">
+                        <img src="/images/icons/saved.png" alt="">
+                        Сохранено
+                    </button>
+                </div>
+            </div>
+            <%
+                })
+            }
+            %>
+        </div>
+
+        <div class="main_right_ava">
+            <div class="img-avatar-2">
+                <img src="/images/img-avatar.png" alt="img-avatar">
+            </div>
+            <div class="main_right_text">
+                <h4><%= user.full_name %></h4>
+            </div>
+            <div class="main_right_button">
+                <%
+                if(loginUser.id == user.id){
+                %>
+                    <a href=""><button class="button_primary_button">Редактировать профиль</button></a>
+                    <a href="/api/signout" class="logout-btn"><button class="button_secondary_button">Выход</button></a>
+                <%       
+                    }
+                %>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/scripts.ejs')%>
+</body>
+</html>

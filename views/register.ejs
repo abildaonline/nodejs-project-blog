@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration in AbildaOnline Blog</title>
+    <link rel="stylesheet" href="/style/all.css">
+</head>
+<body>
+    <%- include('partials/header.ejs')%>
+    <div class="container">
+        <div class="main">
+            <form action="/api/signup" method="POST" class="form">
+                    <h3>Регистрация</h3>
+                <fieldset class="fieldset">
+                    <input type="email" placeholder="Введите email" name="email">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <input type="text" placeholder="Введите полное имя" name="full_name">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <input type="password" placeholder="Введите пароль" name="password">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <input type="password" placeholder="Подтвердите пароль" name="re_password">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <button type="submit">Зарегистрироваться</button>
+                </fieldset>
+                <p>У Вас уже есть аккаунт? <a href="/login">Войти</a></p>
+            </form>            
+        </div>
+    </div>
+    <%- include('partials/scripts.ejs')%>
+</body>
+</html>

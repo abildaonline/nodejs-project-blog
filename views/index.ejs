@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbildaOnline Blog</title>
+    <script src="https://kit.fontawesome.com/c2f2cc8b3e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style/all.css">
+</head>
+<body>
+    <%- include('partials/header.ejs')%>
+
+    <div class="main_container">
+
+        <div class="main_left">
+            <div class="main_blog_text">
+                <h1>Блоги по программированию</h1>
+                <p>Популярные и лучшие публикации по программированию для начинающих <br>
+                    и профессиональных программистов и IT-специалистов.
+                </p>
+            </div>
+
+            <%
+                blogs.forEach(item => {
+            %>
+            <div class="main_content_blog">
+                <div class="main_content_blog_img">
+                    <img src="<%=item.image%>" alt="main_content_blog_img">
+                </div>
+                <div class="main_content_blog_text">
+                    <h3><%=item.title%></h3>
+                    <p><%=item.text%></p>
+                </div>
+                            <div class="main_content_blog_info">
+                <div class="main_content_blog_info_icons_and_text">
+                    <i class="fa-solid fa-list"></i>
+                    <p><%=item.category.name%></p>
+                </div>
+                <%
+                if(user.toWatch && user.toWatch.includes(item._id)){
+                %>
+                    <button class="blog-btn" onclick="deleteFromToWatch('<%=item._id%>')">
+                        <img src="/images/icons/saved.png" alt="">
+                        Сохранено
+                    </button>
+                <%
+                    }else{
+                %>
+                    <button class="blog-btn" onclick="saveToWatch('<%=item._id%>')">
+                        <img src="/images/icons/save.svg" alt="">
+                        Буду читать
+                    </button>
+                <%
+                    }
+                %>
+            </div>
+            </div>
+            <%
+                })
+            %>
+            <div class="pages">
+                <%
+                    let localsString = ''
+                    if(locals.category){
+                        localsString = `category=${locals.category}&`
+                    }
+                    if(locals.search){
+                        localsString = `search=$(locals.search)&`
+                    }
+                    for(let i = 0; i < pages; i++){
+                %>
+                    <a href="?<%=localsString%>page=<%=i%>"><%=i + 1%></a>
+                <%
+                    }
+                %>
+            </div>
+        </div>
+
+        <div class="main_right">
+            <h3>Категории</h3>
+            <% categories.forEach(category => {%>
+                <a href="?category=<%=category.key%>"><%=category.name%></a>
+            <% })%>
+        </div>
+    </div>
+    <%- include('partials/scripts.ejs')%>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New blog in AbildaOnline Blog</title>
+    <link rel="stylesheet" href="/style/all.css">
+</head>
+<body>
+    <%- include('partials/header.ejs')%>
+
+    <div class="container">
+        <div class="main">
+            <form action="/api/blogs/new_blog" method="POST" class="container_new_blog" enctype="multipart/form-data">
+                <div class="new_blog_text">
+                    <p>Новый блог</p>
+                </div>
+                <div class="new_blog_input">
+                    <label for="">Введите заголовок блога</label>
+                    <input type="text" placeholder="Введите заголовок блога" name="title">
+                    <label for="">Выберите категорию</label>
+                    <select name="category" id="">
+                        <%
+                            categories.forEach(category =>{
+                        %>
+                            <option value="<%=category._id%>"><%=category.name%></option>
+                        <%
+                            })
+                        %>
+                    </select>
+                </div>
+                <div class="new_blog_button_select_a_picture">
+                    <label for="">Выберите картинку</label>
+                    <input type="file" name="image">
+                </div>
+                <div class="new_blog_input">
+                    <label for="">Введите описание блога</label>
+                    <input type="text" placeholder="Введите описание блога" name="text">
+                </div>
+                <div class="new_blog_button">
+                    <button type="submit">Создать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/scripts.ejs')%>
+</body>
+</html>
